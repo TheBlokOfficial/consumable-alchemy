@@ -28,7 +28,7 @@ Zamiana alchemii z singletonów odnawianych medytacją na system zużywalny.
   - `recipes.py` → `data.json` (przedmioty + receptury), `table.py` → tabela receptur mikstur/bomb, `rule.py [próg]` → symulacja reguły receptury powielania.
 - Instalacja moda: `deploy.bat` (dwuklik; nakładka na `deploy.ps1`, opcjonalny argument: ścieżka gry) → `<gra>\mods\modConsumableAlchemy`.
 - Kompilacja: gra kompiluje skrypty przy starcie; błędy pokazuje w oknie przy uruchomieniu.
-- Repozytorium: git (gałąź `main`), prywatne repo GitHub `TheBlokOfficial/consumable-alchemy` (od sesji 5). Autor commitów: `TheBlokOfficial <tomasznosal.mail@proton.me>` (lokalny config repo). **Nie commitować danych gry** — `tools/recipes/x/` (wypakowane XML-e CDPR) i `data.json` są w `.gitignore`; odtworzyć przez `bundle.py extract` + `recipes.py`.
+- Repozytorium: git (gałąź `main`), **publiczne** repo GitHub https://github.com/TheBlokOfficial/consumable-alchemy (od sesji 5; wszystko, co commitujesz, jest jawne). Autor commitów: `TheBlokOfficial <tomasznosal.mail@proton.me>` (lokalny config repo). **Nie commitować danych gry** — `tools/recipes/x/` (wypakowane XML-e CDPR) i `data.json` są w `.gitignore`; odtworzyć przez `bundle.py extract` + `recipes.py`.
 - `README.md` = strona moda dla gracza (PL, bez technikaliów, styl strony na Nexusie). Szczegóły techniczne tylko tutaj.
 
 ```
