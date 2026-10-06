@@ -1,0 +1,6 @@
+# Game data extracted from the game's bundles (CD PROJEKT RED) - regenerate with tools\recipes\bundle.py / recipes.py
+tools/recipes/x/
+tools/recipes/data.json
+
+__pycache__/
+*.pyc
