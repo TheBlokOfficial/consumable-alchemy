@@ -12,6 +12,7 @@ Mod używa adnotacji kompilatora skryptów (`@wrapMethod`, `@replaceMethod`, `@a
 | `consumableAlchemy_inventory.ws` | blokada odnawiania, alkohol/powiadomienia, tutorial, stół w Corvo Bianco |
 | `consumableAlchemy_alchemy.ws` | menedżer i menu alchemii (`CanCookRecipe`, `CookItem`, odświeżanie menu) |
 | `consumableAlchemy_recipes.ws` | receptura powielania (wspólna funkcja dla wszystkich źródeł receptur) |
+| `consumableAlchemy_recipes_table.ws` | **generowany** (`tools/recipes/generate.py`) — tabela receptur pełnych i powielania; nie edytować ręcznie |
 
 ## Klasyfikacja „consumable” — `CA_IsConsumableItemName` (common.ws)
 
@@ -39,7 +40,11 @@ Sesja 7 usunęła: `@replaceMethod SingletonItemGetMaxAmmo`, `CA_GetMaxAmmo`, `@
 
 ## Receptura powielania — `consumableAlchemy_recipes.ws`
 
-`CA_GetRecipeIngredients(recipe)`: jeśli gracz posiada uwarzony przedmiot (`CA_IsCopyRecipe` — consumable i `GetItemQuantityByName > 0`, także 0 dawek) → `CA_GetCopyIngredients`, inaczej pełna receptura. Reguła (v2 + dzielnik, od v0.3): wypada przedmiot niższego poziomu (`category potion/petard`); alkohol (`StrongAlcohol`) zostaje zawsze ×1, `White Gull 1` → `Alcohest`; zostają proszki bazowe bomb (`CA_IsBombBase`) i składniki bez tagu `MutagenIngredient` z `GetItemPrice ≤ CA_GetCopyPriceThreshold()` (16), ilość / `CA_GetCopyQuantityDivisor()` (2) w górę; reszta wypada. `tools\recipes\rule.py [próg] [dzielnik]` liczy dokładnie to samo. Planowane zastąpienie gotową tabelą — [recipes.md](recipes.md).
+`CA_GetRecipeIngredients(recipe)` czyta recepturę z **tabeli** (D19): `CA_GetTableIngredients(recipe.recipeName, isCopy, out ingredients)` z generowanego `consumableAlchemy_recipes_table.ws`; `isCopy` = gracz posiada uwarzony przedmiot (`CA_IsCopyRecipe` — consumable i `GetItemQuantityByName > 0`, także 0 dawek) → receptura powielania, inaczej pełna. Receptury spoza tabeli (oleje, questowe, inne) → vanilla `requiredIngredients` w obu przypadkach (bezpieczny fallback). Kluczem jest nazwa receptury (`name_name` z XML, np. `Recipe for Swallow 1`).
+
+Łańcuch: `tools/recipes/recipes_table.json` (źródło prawdy, edytowane ręcznie; szkic z `draft.py`) → `generate.py` (walidacja + generowanie) → `consumableAlchemy_recipes_table.ws`. Po każdej zmianie tabeli uruchomić `generate.py` i wgrać moda. Budowa generowanego pliku: dyspozytor `CA_GetTableIngredients` → po jednej funkcji ze `switch` na `name` na rodzaj (`_Potion` / `_Bomb` / `_Decoction`) → po jednej małej funkcji na recepturę (`CA_TableRecipe_*`, gałąź `isCopy` / pełna) → `CA_AddTableIngredient`. Małe funkcje, bo kompilator vanilli nie mieści dużych (`HACK_NO_MEMORY_TO_COMPILE_*` w `gameEffectManager.ws:201`, `OutOfMemoryHack_*` w `quest_function.ws:7363`); `switch` na `name` jak w vanilli (`temp.ws:9197`, `definitionsManager.ws:76`). Pierwsza wersja tabeli odtwarza dokładnie v0.3: pełna = vanilla (kolejność z XML), powielenie = reguła v0.3.
+
+Historia: v0.3 liczyła powielenie regułą w grze (`CA_GetCopyIngredients`: alkohol ×1, `White Gull 1` → `Alcohest`, proszki bazowe bomb i składniki ≤ 16 koron bez mutagenów, ilość / 2 w górę) — dziś `tools\recipes\rule.py`, generator szkicu tabeli.
 
 **Wszystkie źródła receptur muszą dawać tę samą listę** (wspólna funkcja `CA_`), inaczej rozbieżność zdradzi moda:
 - `W3AlchemyManager.GetRecipe` (`@replaceMethod`) — `CanCookRecipe`, `CookItem`, `GetRequiredIngredients`. (Receptury z XML ładuje prywatne `LoadRecipesCustomXMLData`, `alchemyManager.ws:46`; menu bierze składniki z `m_recipeList[id].requiredIngredients`, `alchemyMenu.ws:605`.)

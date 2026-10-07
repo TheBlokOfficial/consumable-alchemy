@@ -2,9 +2,18 @@
 
 Testy robi użytkownik w grze po wdrożeniu (`deploy.ps1`). Używać **zwykłego zapisu** z poznanymi recepturami (nie startów samodzielnych DLC — patrz [Pułapki testowe](#pułapki-testowe)). Gra kompiluje skrypty przy starcie; ostrzeżenia `[content0] ... not marked as abstract` / `has no autostate` pochodzą z vanilli.
 
-## v0.4 (sesja 7) — bieżąca
+## Tabela receptur (sesja 7) — bieżąca, wgrana, NIEPRZETESTOWANA
 
-Stan: v0.4 skommitowane lokalnie (`b2be4c2`), niewypchnięte. Wynik wstępny (sesja 7, potwierdzenie użytkownika): kompiluje się, mod się wczytuje — na starcie HoS medytacja nie odnawia Wzmocnionej Jaskółki. Reszta checklisty niezaliczona.
+Mod czyta receptury z wygenerowanej tabeli (`consumableAlchemy_recipes_table.ws`, ~2100 linii) zamiast reguły v0.3. Tabela odtwarza v0.3 1:1 (93 receptury zweryfikowane narzędziowo) → rozgrywka bez zmian.
+
+- [ ] Kompilacja (duży plik, `switch` na `name`, parametry `out` — ryzyko niskie, ale to pierwsze uruchomienie).
+- [ ] Jaskółka 1 nieposiadana → pełna receptura (`Dwarven spirit`, 5× `Celandine`, `Drowner brain`).
+- [ ] Po uwarzeniu panel od razu pokazuje powielenie (`Dwarven spirit`, 3× `Celandine`).
+- [ ] Tooltip receptury w ekwipunku = lista w menu.
+
+## v0.4 (sesja 7)
+
+Stan: v0.4 wypchnięte (`b2be4c2`). Wynik wstępny (sesja 7, potwierdzenie użytkownika): kompiluje się, mod się wczytuje — na starcie HoS medytacja nie odnawia Wzmocnionej Jaskółki. Reszta checklisty niezaliczona.
 
 - [x] Kompilacja (po usunięciu `@replaceMethod SingletonItemGetMaxAmmo` / `GiveItemTo` i `CA_SetConsumableAmmo`).
 - [ ] Warzenie przy 0/x i przy częściowej kieszeni (np. 1/3) daje max.

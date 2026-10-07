@@ -35,6 +35,9 @@ Zamiana alchemii z singletonów odnawianych medytacją na system zużywalny. Wzo
 
 - **D23. Samodzielne starty dodatków (HoS / B&W) — odłożone** (sesja 7). Rekomendacja (owinięcie `StandaloneEp*_1` + nadanie receptur posiadanym przedmiotom) i odrzucone warianty: [roadmap.md](roadmap.md#samodzielne-starty-dodatków-hos--bw--odłożone-decyzja-użytkownika-sesja-7).
 - **D24. Model współpracy** (sesja 7): użytkownik decyduje i testuje w grze; Claude jako architekt zleca kod subagentom — szczegóły w `CLAUDE.md` („Współpraca”).
+- **D25. Dwa poziomy na liście receptur zostają** (potwierdzone w sesji 7, por. D18): posiadana niepełna Jaskółka 1 (dolewka) + Jaskółka 2 (ulepszenie) widoczne naraz; w ekwipunku nigdy obie (ulepszenie zużywa poz. 1, poz. 1 zablokowany przy posiadanym poz. 2).
+- **D26. OTWARTE (sesja 7): dwuznaczny komunikat „Już masz ten przedmiot”** (`EAE_CannotCookMore` → `panel_alchemy_exception_already_cooked`). Vanilla: „uwarzone na zawsze”; w modzie także „pełna kieszeń — uwarzysz po zużyciu” (zgłosił użytkownik). Kierunek: znaleźć **istniejący** klucz lokalizacji pasujący do pełnej kieszeni i pokazywać go tylko przy `ammo >= max` (niższy poziom przy posiadanym wyższym — vanilla); uwaga: status steruje też filtrem menu „Już wykonane” (`canCookStatusForFilter`, `alchemyMenu.ws:459/514`) — zmienić tylko tekst, nie filtr. Research przerwany (budżet), do wznowienia: enum `EAlchemyExceptions`, `AlchemyExceptionToString`, kandydaci kluczy (crafting/ekwipunek/medytacja) z brzmieniem PL/EN z `*.w3strings`. Jeśli nic nie pasuje — zostaje jak jest.
+- **D27. OTWARTE (sesja 7): `Pops Antidote`** (q303) nie ma tagu `Quest`, więc mod traktuje go jak consumable (jest w tabeli receptur). Rekomendacja architekta: wyłączyć z systemu (vanilla) — czeka na decyzję użytkownika.
 
 ## Receptury powielania
 

@@ -13,7 +13,10 @@ Depot RedKit niepotrzebny (usunięty przez użytkownika w sesji 2) — XML-e wyc
   - `xml.bundle` → `gameplay\items\*.xml` (baza + wersje `items_plus` dla NG+); `ep1.bundle` / `bob.bundle` → `dlc\ep1|bob\data\gameplay\items\*.xml`. Jest tylko `content\content0` (dodatki w nim, brak katalogu `dlc`).
 - `recipes.py` → `data.json` (przedmioty + receptury).
 - `table.py` → tabela receptur mikstur/bomb (z cenami).
-- `rule.py [próg] [dzielnik]` → symulacja reguły powielania (liczy dokładnie to co `CA_GetCopyIngredients`).
+- `rule.py [próg] [dzielnik]` → reguła powielania v0.3 (to, co do v0.3 liczył w grze `CA_GetCopyIngredients`); dziś używana przez `draft.py`.
+- `recipes_table.json` — **tabela receptur, źródło prawdy dla moda** (D19), edytowana ręcznie, commitowana (same nazwy przedmiotów i ilości). Klucz = nazwa receptury (`Recipe for Swallow 1`); pola: `item`, `family`, `level` (1–3), `kind` (`potion` / `bomb` / `decoction`), `full` i `copy` (listy `[nazwa, ilość]`), `note`. Sortowanie: rodzaj → rodzina → poziom. Obejmuje wszystkie receptury, których przedmiot jest consumable wg `CA_IsConsumableItemName` (93: 41 mikstur, 24 bomby, 28 wywarów); receptury spoza tabeli są w grze vanilla.
+- `draft.py` → szkic tabeli z danych vanilli: `full` = receptura z XML, `copy` = `rule.py` (16, 2), czyli dokładnie v0.3. Nie nadpisuje istniejącej tabeli bez `--force`; `--diff` porównuje tabelę ze świeżym szkicem (pokazuje ręczne zmiany).
+- `generate.py` → waliduje tabelę (pola, ilości > 0, niepuste listy, brak duplikatów składnika i klucza, bezpieczne nazwy) i generuje `src/.../consumableAlchemy_recipes_table.ws`. Uruchamiać po każdej zmianie tabeli; wygenerowanego pliku nie edytować ręcznie.
 - `availability.py` (bez argumentu: tabela źródeł składników — sklepy/świat; `copies`: koszty powielenia wg dostępności).
 - `compare.py` → porównanie reguły v2 z „wyrzuć najdroższy składnik”.
 - `x/` i `data.json` są w `.gitignore` (dane CDPR) — odtwarzać przez `bundle.py extract` + `recipes.py`.

@@ -1,0 +1,839 @@
+{
+  "Recipe for Black Blood 1": {
+    "item": "Black Blood 1",
+    "family": "Black Blood",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["Sewant mushrooms", 2], ["Ghoul blood", 4]],
+    "copy": [["Dwarven spirit", 1], ["Sewant mushrooms", 1]],
+    "note": ""
+  },
+  "Recipe for Black Blood 2": {
+    "item": "Black Blood 2",
+    "family": "Black Blood",
+    "level": 2,
+    "kind": "potion",
+    "full": [["Alcohest", 1], ["Black Blood 1", 1], ["Hellebore petals", 1], ["Sewant mushrooms", 5], ["Ghoul blood", 5]],
+    "copy": [["Alcohest", 1], ["Hellebore petals", 1], ["Sewant mushrooms", 3]],
+    "note": ""
+  },
+  "Recipe for Black Blood 3": {
+    "item": "Black Blood 3",
+    "family": "Black Blood",
+    "level": 3,
+    "kind": "potion",
+    "full": [["White Gull 1", 1], ["Black Blood 2", 1], ["Hellebore petals", 5], ["Sewant mushrooms", 5], ["Han", 1], ["Nostrix", 1], ["Rebis", 1]],
+    "copy": [["Alcohest", 1], ["Hellebore petals", 3], ["Sewant mushrooms", 3], ["Han", 1], ["Nostrix", 1]],
+    "note": ""
+  },
+  "Recipe for Blizzard 1": {
+    "item": "Blizzard 1",
+    "family": "Blizzard",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["White myrtle", 5], ["Golem heart", 1]],
+    "copy": [["Dwarven spirit", 1], ["White myrtle", 3]],
+    "note": ""
+  },
+  "Recipe for Blizzard 2": {
+    "item": "Blizzard 2",
+    "family": "Blizzard",
+    "level": 2,
+    "kind": "potion",
+    "full": [["Alcohest", 1], ["Blizzard 1", 1], ["Celandine", 1], ["White myrtle", 5], ["Golem heart", 1]],
+    "copy": [["Alcohest", 1], ["Celandine", 1], ["White myrtle", 3]],
+    "note": ""
+  },
+  "Recipe for Blizzard 3": {
+    "item": "Blizzard 3",
+    "family": "Blizzard",
+    "level": 3,
+    "kind": "potion",
+    "full": [["White Gull 1", 1], ["Blizzard 2", 1], ["Celandine", 4], ["White myrtle", 4], ["Sewant mushrooms", 1], ["Buckthorn", 1], ["Rebis", 1]],
+    "copy": [["Alcohest", 1], ["Celandine", 2], ["White myrtle", 2], ["Sewant mushrooms", 1], ["Buckthorn", 1]],
+    "note": ""
+  },
+  "Recipe for Cat 1": {
+    "item": "Cat 1",
+    "family": "Cat",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["Berbercane fruit", 4], ["Water essence", 2]],
+    "copy": [["Dwarven spirit", 1], ["Berbercane fruit", 2]],
+    "note": ""
+  },
+  "Recipe for Cat 2": {
+    "item": "Cat 2",
+    "family": "Cat",
+    "level": 2,
+    "kind": "potion",
+    "full": [["Alcohest", 1], ["Cat 1", 1], ["Berbercane fruit", 5], ["Cortinarius", 1], ["Water essence", 3]],
+    "copy": [["Alcohest", 1], ["Berbercane fruit", 3], ["Cortinarius", 1]],
+    "note": ""
+  },
+  "Recipe for Cat 3": {
+    "item": "Cat 3",
+    "family": "Cat",
+    "level": 3,
+    "kind": "potion",
+    "full": [["White Gull 1", 1], ["Cat 2", 1], ["Berbercane fruit", 4], ["Cortinarius", 4], ["Moleyarrow", 1], ["Allspice root", 1], ["Aether", 1]],
+    "copy": [["Alcohest", 1], ["Berbercane fruit", 2], ["Cortinarius", 2], ["Moleyarrow", 1], ["Allspice root", 1]],
+    "note": ""
+  },
+  "Recipe for Full Moon 1": {
+    "item": "Full Moon 1",
+    "family": "Full Moon",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["Wolfsbane", 2], ["Nightwraith dark essence", 1]],
+    "copy": [["Dwarven spirit", 1], ["Wolfsbane", 1]],
+    "note": ""
+  },
+  "Recipe for Full Moon 2": {
+    "item": "Full Moon 2",
+    "family": "Full Moon",
+    "level": 2,
+    "kind": "potion",
+    "full": [["Alcohest", 1], ["Full Moon 1", 1], ["Crows eye", 2], ["Wolfsbane", 5], ["Nightwraith dark essence", 2]],
+    "copy": [["Alcohest", 1], ["Crows eye", 1], ["Wolfsbane", 3]],
+    "note": ""
+  },
+  "Recipe for Full Moon 3": {
+    "item": "Full Moon 3",
+    "family": "Full Moon",
+    "level": 3,
+    "kind": "potion",
+    "full": [["White Gull 1", 1], ["Full Moon 2", 1], ["Mistletoe", 1], ["Verbena", 1], ["Crows eye", 4], ["Wolfsbane", 4], ["Quebrith", 1]],
+    "copy": [["Alcohest", 1], ["Mistletoe", 1], ["Verbena", 1], ["Crows eye", 2], ["Wolfsbane", 2]],
+    "note": ""
+  },
+  "Recipe for Golden Oriole 1": {
+    "item": "Golden Oriole 1",
+    "family": "Golden Oriole",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["Blowbill", 4], ["Noonwraith light essence", 1]],
+    "copy": [["Dwarven spirit", 1], ["Blowbill", 2]],
+    "note": ""
+  },
+  "Recipe for Golden Oriole 2": {
+    "item": "Golden Oriole 2",
+    "family": "Golden Oriole",
+    "level": 2,
+    "kind": "potion",
+    "full": [["Alcohest", 1], ["Golden Oriole 1", 1], ["Blowbill", 6], ["Celandine", 1], ["Noonwraith light essence", 2]],
+    "copy": [["Alcohest", 1], ["Blowbill", 3], ["Celandine", 1]],
+    "note": ""
+  },
+  "Recipe for Golden Oriole 3": {
+    "item": "Golden Oriole 3",
+    "family": "Golden Oriole",
+    "level": 3,
+    "kind": "potion",
+    "full": [["White Gull 1", 1], ["Golden Oriole 2", 1], ["Blowbill", 4], ["Celandine", 4], ["Han", 1], ["Ranogrin", 1], ["Quebrith", 1]],
+    "copy": [["Alcohest", 1], ["Blowbill", 2], ["Celandine", 2], ["Han", 1], ["Ranogrin", 1]],
+    "note": ""
+  },
+  "Recipe for Killer Whale 1": {
+    "item": "Killer Whale 1",
+    "family": "Killer Whale",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 2], ["Balisse fruit", 5], ["Buckthorn", 6], ["Drowned dead tongue", 5]],
+    "copy": [["Dwarven spirit", 1], ["Balisse fruit", 3], ["Buckthorn", 3]],
+    "note": ""
+  },
+  "Recipe for Maribor Forest 1": {
+    "item": "Maribor Forest 1",
+    "family": "Maribor Forest",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["Berbercane fruit", 3], ["Alghoul bone marrow", 1], ["Drowned dead tongue", 4]],
+    "copy": [["Dwarven spirit", 1], ["Berbercane fruit", 2]],
+    "note": ""
+  },
+  "Recipe for Maribor Forest 2": {
+    "item": "Maribor Forest 2",
+    "family": "Maribor Forest",
+    "level": 2,
+    "kind": "potion",
+    "full": [["Alcohest", 1], ["Maribor Forest 1", 1], ["Berbercane fruit", 5], ["Crows eye", 1], ["Drowned dead tongue", 2]],
+    "copy": [["Alcohest", 1], ["Berbercane fruit", 3], ["Crows eye", 1]],
+    "note": ""
+  },
+  "Recipe for Maribor Forest 3": {
+    "item": "Maribor Forest 3",
+    "family": "Maribor Forest",
+    "level": 3,
+    "kind": "potion",
+    "full": [["White Gull 1", 1], ["Maribor Forest 2", 1], ["Berbercane fruit", 4], ["Crows eye", 4], ["Hellebore petals", 1], ["Ribleaf", 1], ["Vermilion", 1]],
+    "copy": [["Alcohest", 1], ["Berbercane fruit", 2], ["Crows eye", 2], ["Hellebore petals", 1], ["Ribleaf", 1]],
+    "note": ""
+  },
+  "Recipe for Petris Philtre 1": {
+    "item": "Petri Philtre 1",
+    "family": "Petri Philtre",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["Arenaria", 5], ["Specter dust", 1]],
+    "copy": [["Dwarven spirit", 1], ["Arenaria", 3]],
+    "note": ""
+  },
+  "Recipe for Petris Philtre 2": {
+    "item": "Petri Philtre 2",
+    "family": "Petri Philtre",
+    "level": 2,
+    "kind": "potion",
+    "full": [["Alcohest", 1], ["Petri Philtre 1", 1], ["Arenaria", 6], ["Buckthorn", 1], ["Specter dust", 2]],
+    "copy": [["Alcohest", 1], ["Arenaria", 3], ["Buckthorn", 1]],
+    "note": ""
+  },
+  "Recipe for Petris Philtre 3": {
+    "item": "Petri Philtre 3",
+    "family": "Petri Philtre",
+    "level": 3,
+    "kind": "potion",
+    "full": [["White Gull 1", 1], ["Petri Philtre 2", 1], ["Arenaria", 4], ["Buckthorn", 4], ["Longrube", 1], ["Ranogrin", 1], ["Rubedo", 1]],
+    "copy": [["Alcohest", 1], ["Arenaria", 2], ["Buckthorn", 2], ["Longrube", 1], ["Ranogrin", 1]],
+    "note": ""
+  },
+  "Recipe for Bear Pheromone Potion 1": {
+    "item": "Pheromone Potion Bear 1",
+    "family": "Pheromone Potion Bear",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["Berbercane fruit", 1], ["Ergot seeds", 1], ["Hellebore petals", 1]],
+    "copy": [["Dwarven spirit", 1], ["Berbercane fruit", 1], ["Ergot seeds", 1], ["Hellebore petals", 1]],
+    "note": ""
+  },
+  "Recipe for Drowner Pheromone Potion 1": {
+    "item": "Pheromone Potion Drowner 1",
+    "family": "Pheromone Potion Drowner",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["Drowner brain", 1], ["Sewant mushrooms", 1], ["Pigskin puffball", 1]],
+    "copy": [["Dwarven spirit", 1], ["Sewant mushrooms", 1], ["Pigskin puffball", 1]],
+    "note": ""
+  },
+  "Recipe for Nekker Pheromone Potion 1": {
+    "item": "Pheromone Potion Nekker 1",
+    "family": "Pheromone Potion Nekker",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["Green mold", 1], ["Drowner brain", 1], ["Moleyarrow", 1]],
+    "copy": [["Dwarven spirit", 1], ["Green mold", 1], ["Moleyarrow", 1]],
+    "note": ""
+  },
+  "Recipe for Pops Antidote": {
+    "item": "Pops Antidote",
+    "family": "Pops Antidote",
+    "level": 1,
+    "kind": "potion",
+    "full": [["White myrtle", 4], ["Celandine", 1], ["Hellebore petals", 1]],
+    "copy": [["White myrtle", 2], ["Celandine", 1], ["Hellebore petals", 1]],
+    "note": ""
+  },
+  "Recipe for Swallow 1": {
+    "item": "Swallow 1",
+    "family": "Swallow",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["Celandine", 5], ["Drowner brain", 1]],
+    "copy": [["Dwarven spirit", 1], ["Celandine", 3]],
+    "note": ""
+  },
+  "Recipe for Swallow 2": {
+    "item": "Swallow 2",
+    "family": "Swallow",
+    "level": 2,
+    "kind": "potion",
+    "full": [["Alcohest", 1], ["Swallow 1", 1], ["Celandine", 6], ["White myrtle", 4], ["Drowner brain", 5]],
+    "copy": [["Alcohest", 1], ["Celandine", 3], ["White myrtle", 2]],
+    "note": ""
+  },
+  "Recipe for Swallow 3": {
+    "item": "Swallow 3",
+    "family": "Swallow",
+    "level": 3,
+    "kind": "potion",
+    "full": [["White Gull 1", 1], ["Swallow 2", 1], ["Berbercane fruit", 6], ["White myrtle", 6], ["Celandine", 4], ["Crows eye", 4], ["Vitriol", 2]],
+    "copy": [["Alcohest", 1], ["Berbercane fruit", 3], ["White myrtle", 3], ["Celandine", 2], ["Crows eye", 2]],
+    "note": ""
+  },
+  "Recipe for Tawny Owl 1": {
+    "item": "Tawny Owl 1",
+    "family": "Tawny Owl",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["Verbena", 2], ["Arachas venom", 1]],
+    "copy": [["Dwarven spirit", 1], ["Verbena", 1]],
+    "note": ""
+  },
+  "Recipe for Tawny Owl 2": {
+    "item": "Tawny Owl 2",
+    "family": "Tawny Owl",
+    "level": 2,
+    "kind": "potion",
+    "full": [["Alcohest", 1], ["Tawny Owl 1", 1], ["Verbena", 4], ["Wolfsbane", 2], ["Arachas venom", 1]],
+    "copy": [["Alcohest", 1], ["Verbena", 2], ["Wolfsbane", 1]],
+    "note": ""
+  },
+  "Recipe for Tawny Owl 3": {
+    "item": "Tawny Owl 3",
+    "family": "Tawny Owl",
+    "level": 3,
+    "kind": "potion",
+    "full": [["White Gull 1", 1], ["Tawny Owl 2", 1], ["Verbena", 4], ["Wolfsbane", 4], ["Fools parsley leaves", 1], ["Mandrake root", 1], ["Sewant mushrooms", 1]],
+    "copy": [["Alcohest", 1], ["Verbena", 2], ["Wolfsbane", 2], ["Fools parsley leaves", 1], ["Mandrake root", 1], ["Sewant mushrooms", 1]],
+    "note": ""
+  },
+  "Recipe for Thunderbolt 1": {
+    "item": "Thunderbolt 1",
+    "family": "Thunderbolt",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["Cortinarius", 2], ["Endriag embryo", 1]],
+    "copy": [["Dwarven spirit", 1], ["Cortinarius", 1]],
+    "note": ""
+  },
+  "Recipe for Thunderbolt 2": {
+    "item": "Thunderbolt 2",
+    "family": "Thunderbolt",
+    "level": 2,
+    "kind": "potion",
+    "full": [["Alcohest", 1], ["Thunderbolt 1", 1], ["Cortinarius", 2], ["Fools parsley leaves", 1], ["Endriag embryo", 2]],
+    "copy": [["Alcohest", 1], ["Cortinarius", 1], ["Fools parsley leaves", 1]],
+    "note": ""
+  },
+  "Recipe for Thunderbolt 3": {
+    "item": "Thunderbolt 3",
+    "family": "Thunderbolt",
+    "level": 3,
+    "kind": "potion",
+    "full": [["White Gull 1", 1], ["Thunderbolt 2", 1], ["Cortinarius", 4], ["Fools parsley leaves", 4], ["Verbena", 1], ["Bryonia", 1], ["Quebrith", 1]],
+    "copy": [["Alcohest", 1], ["Cortinarius", 2], ["Fools parsley leaves", 2], ["Verbena", 1], ["Bryonia", 1]],
+    "note": ""
+  },
+  "Recipe for White Honey 1": {
+    "item": "White Honey 1",
+    "family": "White Honey",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["Honeysuckle", 1]],
+    "copy": [["Dwarven spirit", 1], ["Honeysuckle", 1]],
+    "note": ""
+  },
+  "Recipe for White Honey 2": {
+    "item": "White Honey 2",
+    "family": "White Honey",
+    "level": 2,
+    "kind": "potion",
+    "full": [["Alcohest", 1], ["White Honey 1", 1], ["Honeysuckle", 2], ["White myrtle", 1]],
+    "copy": [["Alcohest", 1], ["Honeysuckle", 1], ["White myrtle", 1]],
+    "note": ""
+  },
+  "Recipe for White Honey 3": {
+    "item": "White Honey 3",
+    "family": "White Honey",
+    "level": 3,
+    "kind": "potion",
+    "full": [["White Gull 1", 1], ["White Honey 2", 1], ["Honeysuckle", 4], ["White myrtle", 4], ["Balisse fruit", 1], ["Hellebore petals", 1], ["Vitriol", 1]],
+    "copy": [["Alcohest", 1], ["Honeysuckle", 2], ["White myrtle", 2], ["Balisse fruit", 1], ["Hellebore petals", 1]],
+    "note": ""
+  },
+  "Recipe for White Raffards Decoction 1": {
+    "item": "White Raffards Decoction 1",
+    "family": "White Raffards Decoction",
+    "level": 1,
+    "kind": "potion",
+    "full": [["Dwarven spirit", 1], ["Ribleaf", 2], ["Nekker heart", 4]],
+    "copy": [["Dwarven spirit", 1], ["Ribleaf", 1]],
+    "note": ""
+  },
+  "Recipe for White Raffards Decoction 2": {
+    "item": "White Raffards Decoction 2",
+    "family": "White Raffards Decoction",
+    "level": 2,
+    "kind": "potion",
+    "full": [["Alcohest", 1], ["White Raffards Decoction 1", 1], ["Ribleaf", 4], ["Bryonia", 1], ["Nekker heart", 5]],
+    "copy": [["Alcohest", 1], ["Ribleaf", 2], ["Bryonia", 1]],
+    "note": ""
+  },
+  "Recipe for White Raffards Decoction 3": {
+    "item": "White Raffards Decoction 3",
+    "family": "White Raffards Decoction",
+    "level": 3,
+    "kind": "potion",
+    "full": [["White Gull 1", 1], ["White Raffards Decoction 2", 1], ["Ribleaf", 4], ["Bryonia", 4], ["Pringrape", 1], ["Bison Grass", 1], ["Vermilion", 1]],
+    "copy": [["Alcohest", 1], ["Ribleaf", 2], ["Bryonia", 2], ["Pringrape", 1], ["Bison Grass", 1]],
+    "note": ""
+  },
+  "Recipe for Dancing Star 1": {
+    "item": "Dancing Star 1",
+    "family": "Dancing Star",
+    "level": 1,
+    "kind": "bomb",
+    "full": [["Saltpetre", 1], ["Sulfur", 2]],
+    "copy": [["Saltpetre", 1], ["Sulfur", 1]],
+    "note": ""
+  },
+  "Recipe for Dancing Star 2": {
+    "item": "Dancing Star 2",
+    "family": "Dancing Star",
+    "level": 2,
+    "kind": "bomb",
+    "full": [["Stammelfords dust", 1], ["Dancing Star 1", 1], ["Phosphorus", 1], ["Sulfur", 1], ["Sewant mushrooms", 1], ["Hellebore petals", 1], ["Nostrix", 1]],
+    "copy": [["Stammelfords dust", 1], ["Phosphorus", 1], ["Sulfur", 1], ["Sewant mushrooms", 1], ["Hellebore petals", 1], ["Nostrix", 1]],
+    "note": ""
+  },
+  "Recipe for Dancing Star 3": {
+    "item": "Dancing Star 3",
+    "family": "Dancing Star",
+    "level": 3,
+    "kind": "bomb",
+    "full": [["Alchemists powder", 1], ["Dancing Star 2", 1], ["Phosphorus", 2], ["Sulfur", 2], ["Sewant mushrooms", 2], ["Nostrix", 2], ["Nigredo", 1]],
+    "copy": [["Alchemists powder", 1], ["Phosphorus", 1], ["Sulfur", 1], ["Sewant mushrooms", 1], ["Nostrix", 1]],
+    "note": ""
+  },
+  "Recipe for Devils Puffball 1": {
+    "item": "Devils Puffball 1",
+    "family": "Devils Puffball",
+    "level": 1,
+    "kind": "bomb",
+    "full": [["Saltpetre", 1], ["Sewant mushrooms", 2]],
+    "copy": [["Saltpetre", 1], ["Sewant mushrooms", 1]],
+    "note": ""
+  },
+  "Recipe for Devils Puffball 2": {
+    "item": "Devils Puffball 2",
+    "family": "Devils Puffball",
+    "level": 2,
+    "kind": "bomb",
+    "full": [["Stammelfords dust", 1], ["Devils Puffball 1", 1], ["Calcium equum", 1], ["Endriag heart", 1], ["Sewant mushrooms", 1], ["Ginatia petals", 1], ["Green mold", 1]],
+    "copy": [["Stammelfords dust", 1], ["Calcium equum", 1], ["Sewant mushrooms", 1], ["Ginatia petals", 1], ["Green mold", 1]],
+    "note": ""
+  },
+  "Recipe for Devils Puffball 3": {
+    "item": "Devils Puffball 3",
+    "family": "Devils Puffball",
+    "level": 3,
+    "kind": "bomb",
+    "full": [["Alchemists powder", 1], ["Devils Puffball 2", 1], ["Calcium equum", 2], ["Endriag heart", 2], ["Sewant mushrooms", 2], ["Ginatia petals", 2], ["Rebis", 1]],
+    "copy": [["Alchemists powder", 1], ["Calcium equum", 1], ["Sewant mushrooms", 1], ["Ginatia petals", 1]],
+    "note": ""
+  },
+  "Recipe for Dragons Dream 1": {
+    "item": "Dragons Dream 1",
+    "family": "Dragons Dream",
+    "level": 1,
+    "kind": "bomb",
+    "full": [["Saltpetre", 1], ["Phosphorus", 2]],
+    "copy": [["Saltpetre", 1], ["Phosphorus", 1]],
+    "note": ""
+  },
+  "Recipe for Dragons Dream 2": {
+    "item": "Dragons Dream 2",
+    "family": "Dragons Dream",
+    "level": 2,
+    "kind": "bomb",
+    "full": [["Stammelfords dust", 1], ["Dragons Dream 1", 1], ["Phosphorus", 1], ["Optima mater", 1], ["Mistletoe", 1], ["Allspice root", 1], ["Bryonia", 1]],
+    "copy": [["Stammelfords dust", 1], ["Phosphorus", 1], ["Mistletoe", 1], ["Allspice root", 1], ["Bryonia", 1]],
+    "note": ""
+  },
+  "Recipe for Dragons Dream 3": {
+    "item": "Dragons Dream 3",
+    "family": "Dragons Dream",
+    "level": 3,
+    "kind": "bomb",
+    "full": [["Alchemists powder", 1], ["Dragons Dream 2", 1], ["Phosphorus", 2], ["Optima mater", 2], ["Allspice root", 2], ["Bryonia", 2], ["Aether", 1]],
+    "copy": [["Alchemists powder", 1], ["Phosphorus", 1], ["Allspice root", 1], ["Bryonia", 1]],
+    "note": ""
+  },
+  "Recipe for Dwimeritium Bomb 1": {
+    "item": "Dwimeritium Bomb 1",
+    "family": "Dwimeritium Bomb",
+    "level": 1,
+    "kind": "bomb",
+    "full": [["Saltpetre", 5], ["Optima mater", 2]],
+    "copy": [["Saltpetre", 3]],
+    "note": ""
+  },
+  "Recipe for Dwimeritium Bomb 2": {
+    "item": "Dwimeritium Bomb 2",
+    "family": "Dwimeritium Bomb",
+    "level": 2,
+    "kind": "bomb",
+    "full": [["Stammelfords dust", 1], ["Dwimeritium Bomb 1", 1], ["Optima mater", 1], ["Powdered pearl", 1], ["Blowbill", 1], ["Ginatia petals", 1], ["Bloodmoss", 1]],
+    "copy": [["Stammelfords dust", 1], ["Blowbill", 1], ["Ginatia petals", 1], ["Bloodmoss", 1]],
+    "note": ""
+  },
+  "Recipe for Dwimeritium Bomb 3": {
+    "item": "Dwimeritium Bomb 3",
+    "family": "Dwimeritium Bomb",
+    "level": 3,
+    "kind": "bomb",
+    "full": [["Alchemists powder", 1], ["Dwimeritium Bomb 2", 1], ["Optima mater", 2], ["Powdered pearl", 2], ["Pigskin puffball", 2], ["Bloodmoss", 2], ["Nigredo", 1]],
+    "copy": [["Alchemists powder", 1], ["Pigskin puffball", 1], ["Bloodmoss", 1]],
+    "note": ""
+  },
+  "Recipe for Grapeshot 1": {
+    "item": "Grapeshot 1",
+    "family": "Grapeshot",
+    "level": 1,
+    "kind": "bomb",
+    "full": [["Saltpetre", 2], ["Calcium equum", 2]],
+    "copy": [["Saltpetre", 1], ["Calcium equum", 1]],
+    "note": ""
+  },
+  "Recipe for Grapeshot 2": {
+    "item": "Grapeshot 2",
+    "family": "Grapeshot",
+    "level": 2,
+    "kind": "bomb",
+    "full": [["Stammelfords dust", 1], ["Grapeshot 1", 1], ["Calcium equum", 1], ["Blowbill", 1], ["Crows eye", 1], ["Longrube", 1]],
+    "copy": [["Stammelfords dust", 1], ["Calcium equum", 1], ["Blowbill", 1], ["Crows eye", 1], ["Longrube", 1]],
+    "note": ""
+  },
+  "Recipe for Grapeshot 3": {
+    "item": "Grapeshot 3",
+    "family": "Grapeshot",
+    "level": 3,
+    "kind": "bomb",
+    "full": [["Alchemists powder", 1], ["Grapeshot 2", 1], ["Calcium equum", 2], ["Sulfur", 2], ["Longrube", 2], ["Hop umbels", 2], ["Nigredo", 1]],
+    "copy": [["Alchemists powder", 1], ["Calcium equum", 1], ["Sulfur", 1], ["Longrube", 1], ["Hop umbels", 1]],
+    "note": ""
+  },
+  "Recipe for Samum 1": {
+    "item": "Samum 1",
+    "family": "Samum",
+    "level": 1,
+    "kind": "bomb",
+    "full": [["Saltpetre", 1], ["Celandine", 2]],
+    "copy": [["Saltpetre", 1], ["Celandine", 1]],
+    "note": ""
+  },
+  "Recipe for Samum 2": {
+    "item": "Samum 2",
+    "family": "Samum",
+    "level": 2,
+    "kind": "bomb",
+    "full": [["Stammelfords dust", 1], ["Samum 1", 1], ["Phosphorus", 1], ["Fogling teeth", 1], ["Celandine", 1], ["Blowbill", 1]],
+    "copy": [["Stammelfords dust", 1], ["Phosphorus", 1], ["Celandine", 1], ["Blowbill", 1]],
+    "note": ""
+  },
+  "Recipe for Samum 3": {
+    "item": "Samum 3",
+    "family": "Samum",
+    "level": 3,
+    "kind": "bomb",
+    "full": [["Alchemists powder", 1], ["Samum 2", 1], ["Phosphorus", 2], ["Fogling teeth", 2], ["Celandine", 2], ["Hellebore petals", 2], ["Aether", 1]],
+    "copy": [["Alchemists powder", 1], ["Phosphorus", 1], ["Celandine", 1], ["Hellebore petals", 1]],
+    "note": ""
+  },
+  "Recipe for Silver Dust Bomb 1": {
+    "item": "Silver Dust Bomb 1",
+    "family": "Silver Dust Bomb",
+    "level": 1,
+    "kind": "bomb",
+    "full": [["Saltpetre", 1], ["Quicksilver solution", 2]],
+    "copy": [["Saltpetre", 1]],
+    "note": ""
+  },
+  "Recipe for Silver Dust Bomb 2": {
+    "item": "Silver Dust Bomb 2",
+    "family": "Silver Dust Bomb",
+    "level": 2,
+    "kind": "bomb",
+    "full": [["Stammelfords dust", 1], ["Silver Dust Bomb 1", 1], ["Quicksilver solution", 1], ["Sulfur", 1], ["Hop umbels", 1], ["Blowbill", 1], ["Honeysuckle", 1]],
+    "copy": [["Stammelfords dust", 1], ["Sulfur", 1], ["Hop umbels", 1], ["Blowbill", 1], ["Honeysuckle", 1]],
+    "note": ""
+  },
+  "Recipe for Silver Dust Bomb 3": {
+    "item": "Silver Dust Bomb 3",
+    "family": "Silver Dust Bomb",
+    "level": 3,
+    "kind": "bomb",
+    "full": [["Alchemists powder", 1], ["Silver Dust Bomb 2", 1], ["Quicksilver solution", 2], ["Sulfur", 2], ["Hop umbels", 2], ["Blowbill", 2], ["Nigredo", 1]],
+    "copy": [["Alchemists powder", 1], ["Sulfur", 1], ["Hop umbels", 1], ["Blowbill", 1]],
+    "note": ""
+  },
+  "Recipe for White Frost 1": {
+    "item": "White Frost 1",
+    "family": "White Frost",
+    "level": 1,
+    "kind": "bomb",
+    "full": [["Saltpetre", 1], ["Ducal water", 1], ["Powdered pearl", 1], ["Allspice root", 2]],
+    "copy": [["Saltpetre", 1], ["Ducal water", 1], ["Allspice root", 1]],
+    "note": ""
+  },
+  "Recipe for White Frost 2": {
+    "item": "White Frost 2",
+    "family": "White Frost",
+    "level": 2,
+    "kind": "bomb",
+    "full": [["Stammelfords dust", 1], ["White Frost 1", 1], ["Ducal water", 2], ["Powdered pearl", 1], ["Fools parsley leaves", 1], ["Verbena", 1], ["Allspice root", 2]],
+    "copy": [["Stammelfords dust", 1], ["Ducal water", 1], ["Fools parsley leaves", 1], ["Verbena", 1], ["Allspice root", 1]],
+    "note": ""
+  },
+  "Recipe for White Frost 3": {
+    "item": "White Frost 3",
+    "family": "White Frost",
+    "level": 3,
+    "kind": "bomb",
+    "full": [["Saltpetre", 1], ["White Frost 2", 1], ["Ducal water", 3], ["Powdered pearl", 2], ["Verbena", 2], ["Allspice root", 3], ["Quebrith", 1]],
+    "copy": [["Saltpetre", 1], ["Ducal water", 2], ["Verbena", 1], ["Allspice root", 2]],
+    "note": ""
+  },
+  "Recipe for Mutagen 1": {
+    "item": "Mutagen 1",
+    "family": "Mutagen 1",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Katakan mutagen", 1], ["Verbena", 1], ["Arenaria", 1]],
+    "copy": [["Dwarven spirit", 1], ["Verbena", 1], ["Arenaria", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 2": {
+    "item": "Mutagen 2",
+    "family": "Mutagen 2",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Arachas mutagen", 1], ["White myrtle", 1]],
+    "copy": [["Dwarven spirit", 1], ["White myrtle", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 3": {
+    "item": "Mutagen 3",
+    "family": "Mutagen 3",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Cockatrice mutagen", 1], ["Crows eye", 1]],
+    "copy": [["Dwarven spirit", 1], ["Crows eye", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 4": {
+    "item": "Mutagen 4",
+    "family": "Mutagen 4",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Volcanic Gryphon mutagen", 1], ["Ribleaf", 1], ["Blowbill", 1]],
+    "copy": [["Dwarven spirit", 1], ["Ribleaf", 1], ["Blowbill", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 5": {
+    "item": "Mutagen 5",
+    "family": "Mutagen 5",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Water Hag mutagen", 1], ["Berbercane fruit", 1]],
+    "copy": [["Dwarven spirit", 1], ["Berbercane fruit", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 6": {
+    "item": "Mutagen 6",
+    "family": "Mutagen 6",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Nightwraith mutagen", 1], ["Mistletoe", 1], ["Sewant mushrooms", 1]],
+    "copy": [["Dwarven spirit", 1], ["Mistletoe", 1], ["Sewant mushrooms", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 7": {
+    "item": "Mutagen 7",
+    "family": "Mutagen 7",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Ekimma mutagen", 1], ["White myrtle", 1], ["Mandrake root", 1]],
+    "copy": [["Dwarven spirit", 1], ["White myrtle", 1], ["Mandrake root", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 8": {
+    "item": "Mutagen 8",
+    "family": "Mutagen 8",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Czart mutagen", 1], ["Pigskin puffball", 1], ["Cortinarius", 1]],
+    "copy": [["Dwarven spirit", 1], ["Pigskin puffball", 1], ["Cortinarius", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 9": {
+    "item": "Mutagen 9",
+    "family": "Mutagen 9",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Fogling 1 mutagen", 1], ["Fools parsley leaves", 1], ["Blowbill", 1]],
+    "copy": [["Dwarven spirit", 1], ["Fools parsley leaves", 1], ["Blowbill", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 10": {
+    "item": "Mutagen 10",
+    "family": "Mutagen 10",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Wyvern mutagen", 1], ["Moleyarrow", 1], ["Celandine", 1]],
+    "copy": [["Dwarven spirit", 1], ["Moleyarrow", 1], ["Celandine", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 11": {
+    "item": "Mutagen 11",
+    "family": "Mutagen 11",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Doppler mutagen", 1], ["Han", 1], ["Longrube", 1]],
+    "copy": [["Dwarven spirit", 1], ["Han", 1], ["Longrube", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 12": {
+    "item": "Mutagen 12",
+    "family": "Mutagen 12",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Troll mutagen", 1], ["Crows eye", 1], ["Honeysuckle", 1]],
+    "copy": [["Dwarven spirit", 1], ["Crows eye", 1], ["Honeysuckle", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 13": {
+    "item": "Mutagen 13",
+    "family": "Mutagen 13",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Noonwraith mutagen", 1], ["Ginatia petals", 1], ["Ergot seeds", 1]],
+    "copy": [["Dwarven spirit", 1], ["Ginatia petals", 1], ["Ergot seeds", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 14": {
+    "item": "Mutagen 14",
+    "family": "Mutagen 14",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Succubus mutagen", 1], ["Green mold", 1], ["Allspice root", 1]],
+    "copy": [["Dwarven spirit", 1], ["Green mold", 1], ["Allspice root", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 15": {
+    "item": "Mutagen 15",
+    "family": "Mutagen 15",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Lesser mutagen red", 5], ["Alghoul bone marrow", 1], ["Buckthorn", 1]],
+    "copy": [["Dwarven spirit", 1], ["Buckthorn", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 16": {
+    "item": "Mutagen 16",
+    "family": "Mutagen 16",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Fiend mutagen", 1], ["Hellebore petals", 1], ["Fools parsley leaves", 1], ["Arenaria", 1]],
+    "copy": [["Dwarven spirit", 1], ["Hellebore petals", 1], ["Fools parsley leaves", 1], ["Arenaria", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 17": {
+    "item": "Mutagen 17",
+    "family": "Mutagen 17",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Forktail mutagen", 1], ["Moleyarrow", 1], ["Bryonia", 1]],
+    "copy": [["Dwarven spirit", 1], ["Moleyarrow", 1], ["Bryonia", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 18": {
+    "item": "Mutagen 18",
+    "family": "Mutagen 18",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Grave Hag mutagen", 1], ["Longrube", 1], ["Cortinarius", 1]],
+    "copy": [["Dwarven spirit", 1], ["Longrube", 1], ["Cortinarius", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 19": {
+    "item": "Mutagen 19",
+    "family": "Mutagen 19",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Wraith mutagen", 1], ["Blowbill", 1], ["Nostrix", 1]],
+    "copy": [["Dwarven spirit", 1], ["Blowbill", 1], ["Nostrix", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 20": {
+    "item": "Mutagen 20",
+    "family": "Mutagen 20",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Dao mutagen", 1], ["Balisse fruit", 1], ["Pringrape", 1]],
+    "copy": [["Dwarven spirit", 1], ["Balisse fruit", 1], ["Pringrape", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 21": {
+    "item": "Mutagen 21",
+    "family": "Mutagen 21",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Lamia mutagen", 1], ["Ribleaf", 1], ["Berbercane fruit", 1]],
+    "copy": [["Dwarven spirit", 1], ["Ribleaf", 1], ["Berbercane fruit", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 22": {
+    "item": "Mutagen 22",
+    "family": "Mutagen 22",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Ancient Leshy mutagen", 1], ["Mandrake root", 1], ["Ginatia petals", 1], ["Honeysuckle", 1]],
+    "copy": [["Dwarven spirit", 1], ["Mandrake root", 1], ["Ginatia petals", 1], ["Honeysuckle", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 23": {
+    "item": "Mutagen 23",
+    "family": "Mutagen 23",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Basilisk mutagen", 1], ["Blowbill", 1], ["Fools parsley leaves", 1], ["Beggartick blossoms", 1]],
+    "copy": [["Dwarven spirit", 1], ["Blowbill", 1], ["Fools parsley leaves", 1], ["Beggartick blossoms", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 24": {
+    "item": "Mutagen 24",
+    "family": "Mutagen 24",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Werewolf mutagen", 1], ["Beggartick blossoms", 1], ["Hop umbels", 1]],
+    "copy": [["Dwarven spirit", 1], ["Beggartick blossoms", 1], ["Hop umbels", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 25": {
+    "item": "Mutagen 25",
+    "family": "Mutagen 25",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Nekker Warrior mutagen", 1], ["Fools parsley leaves", 1], ["Ranogrin", 1]],
+    "copy": [["Dwarven spirit", 1], ["Fools parsley leaves", 1], ["Ranogrin", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 26": {
+    "item": "Mutagen 26",
+    "family": "Mutagen 26",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Leshy mutagen", 1], ["Moleyarrow", 1], ["Pringrape", 1]],
+    "copy": [["Dwarven spirit", 1], ["Moleyarrow", 1], ["Pringrape", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 27": {
+    "item": "Mutagen 27",
+    "family": "Mutagen 27",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 1], ["Gryphon mutagen", 1], ["Oil", 1], ["Bryonia", 1], ["Wolf liver", 1]],
+    "copy": [["Dwarven spirit", 1], ["Oil", 1], ["Bryonia", 1], ["Wolf liver", 1]],
+    "note": ""
+  },
+  "Recipe for Mutagen 28": {
+    "item": "Mutagen 28",
+    "family": "Mutagen 28",
+    "level": 1,
+    "kind": "decoction",
+    "full": [["Dwarven spirit", 5], ["Lesser mutagen red", 4], ["Lesser mutagen green", 4], ["Lesser mutagen blue", 4], ["Wraith essence", 1]],
+    "copy": [["Dwarven spirit", 1]],
+    "note": ""
+  }
+}

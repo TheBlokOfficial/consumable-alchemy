@@ -60,9 +60,9 @@ README.md                         – strona moda dla gracza
 
 ## Status (2026-10-07, sesja 7)
 
-- **v0.4** zaimplementowana w sesji 7: warzenie napełnia do max, limity vanilli, pozyskanie poza warzeniem = vanilla. Receptury powielania bez zmian (reguła v0.3: próg 16, dzielnik 2).
-- Commit lokalny `b2be4c2`, **niewypchnięty**. Użytkownik potwierdził: kompiluje się i wczytuje (start HoS — medytacja nie odnawia Wzmocnionej Jaskółki). Reszta checklisty v0.4: [docs/testing.md](docs/testing.md).
-- Następny etap wg [docs/roadmap.md](docs/roadmap.md): narzędzia receptur (szkic → walidator → generator `.ws`), potem szlifowanie receptur rodzina po rodzinie. Otwarte: części potworów w powieleniu (D22), samodzielne starty dodatków (odłożone, D23). Odłożone na kiedyś: widoczność na liście modów, oleje jako zużywalne.
+- **v0.4** (sesja 7, wypchnięte): warzenie napełnia do max, limity vanilli, pozyskanie poza warzeniem = vanilla. Kompiluje się i wczytuje; reszta checklisty: [docs/testing.md](docs/testing.md).
+- **Tabela receptur** (sesja 7): mod czyta receptury z generowanego `consumableAlchemy_recipes_table.ws` (źródło: `tools/recipes/recipes_table.json`, = reguła v0.3 1:1). Wgrane, **nieprzetestowane w grze**.
+- Następny etap wg [docs/roadmap.md](docs/roadmap.md) („Kolejność pracy”): katalog składników z dropem potworów (przerwany, do wznowienia) → walidator → szlifowanie receptur. Otwarte decyzje: D22 (części potworów), D26 (komunikat „Już masz ten przedmiot”), D27 (`Pops Antidote`); odłożone: D23 (starty dodatków), lista modów, oleje. Odłożone na kiedyś: widoczność na liście modów, oleje jako zużywalne.
 
 ## Dokumentacja (`docs/`)
 

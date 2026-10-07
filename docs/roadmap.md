@@ -9,15 +9,19 @@ Stan i kolejność pracy, otwarte kwestie, pomysły. Decyzje: [decisions.md](dec
 | v0.1 | 1–2 | blokada odnawiania, ponowne warzenie (1 dawka), limit stałe 3; loot: nowa 1 dawka, posiadana +1 |
 | v0.2 | 2 | limit „baza 3 + bonusy vanilli”; potwierdzone „wszystko działa” (2026-10-06) |
 | v0.3 | 4 | receptura powielania (v2 + połowa ilości), wywary w systemie (limit 1), wyłączenie przedmiotów questowych, naprawa ponownego warzenia poz. 2/3 |
-| v0.4 | 6 (plan), 7 (kod) | warzenie = pełna kieszeń, limity vanilli, pozyskanie poza warzeniem = vanilla; commit lokalny `b2be4c2` (niewypchnięty); kompiluje się i wczytuje |
+| v0.4 | 6 (plan), 7 (kod) | warzenie = pełna kieszeń, limity vanilli, pozyskanie poza warzeniem = vanilla; commit `b2be4c2` (wypchnięty); kompiluje się i wczytuje |
+| (tabela) | 7 | receptury z generowanej tabeli zamiast reguły w grze (= v0.3 1:1); wgrane, nieprzetestowane |
 
 (Sesja 3: dane receptur i narzędzia; sesja 5: repo publiczne, „chyba działa” dla v0.3; sesja 6: projekt v0.4 + audyt receptur.)
 
 ## Kolejność pracy
 
 1. ~~Kod v0.4 (pełna kieszeń + limity vanilli)~~ ✔ sesja 7 — czeka na test w grze ([testing.md](testing.md)).
-2. Narzędzia receptur: szkic → walidator (m.in. poziom „wysiłku”, kolizje) → generator `.ws` z tabelą ([recipes.md](recipes.md#kierunek-ręcznie-dopracowana-tabela-sesja-6)).
-3. Szlifowanie receptur rodzina po rodzinie (pełna + powielenie).
+2. Narzędzia receptur ([recipes.md](recipes.md#kierunek-ręcznie-dopracowana-tabela-sesja-6)):
+   - 2a-B ✔ sesja 7: `recipes_table.json` (93 receptury: 41 mikstur, 24 bomby, 28 wywarów; = v0.3 1:1) → `draft.py` (szkic, bez `--force` nie nadpisuje) → `generate.py` → `consumableAlchemy_recipes_table.ws`; mod czyta tabelę (fallback: vanilla). Wgrane, czeka na test ([testing.md](testing.md)).
+   - 2a-A ✗ przerwane (budżet, sesja 7), brak wyników: `tools/recipes/ingredients.py` → `ingredient_catalog.json` — dla każdego składnika cena, typ, sklepy (liczba/region), zbieranie w świecie, **drop z potworów** (tabele lootu potworów w XML, szansa, powiązanie z potworem, respawn) i poziom wysiłku pospolity/średni/rzadki (effort 1–5, kryteria w `_meta`). Dane do D22 i walidatora. Nie edytować `draft.py`/`generate.py`/tabeli przy tej pracy.
+   - 2b — walidator `validate.py` (po 2a-A): kolizje (identyczne zbiory i różnica 1 składnika), brak sygnatury, monotoniczność wysiłku w rodzinie, wysiłek wg rangi (podstawowe ≤ zaawansowane), powielenie < pełna, składniki istnieją, alkohol w miksturach/wywarach, proszek w bombach, brak niższego poziomu w powieleniu.
+3. Szlifowanie receptur partiami (mikstury → bomby → wywary): szkic propozycji per rodzina (pełna + powielenie + uzasadnienie + wynik walidatora) → akceptacja użytkownika → `generate.py` → deploy → test. Przed startem: decyzja D22 (rekomendacja architekta: pospolite części potworów — `Ghoul blood`, `Drowner brain`, `Drowned dead tongue`, `Nekker heart` — zostają jako składnik wysiłku, jeśli dane dropu potwierdzą; rzadkie → tematyczny zamiennik) i pytanie, czy powielenie wywaru zawiera mutagen.
 
 (Wcześniejszy plan sesji 3 — reguła odblokowania, tabela receptur, akceptacja reguły, kod v0.3 — wykonany; jego krok „strojenie progu/dzielnika” zastąpiony ręczną tabelą, D19.)
 
