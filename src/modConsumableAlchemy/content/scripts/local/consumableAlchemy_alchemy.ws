@@ -123,39 +123,27 @@ function CanCookRecipe(recipeName : name, optional ignorePlayerState:bool) : EAl
 	return EAE_NoException;
 }
 
-// One brew = one dose. Vanilla gives a new item full doses and leaves an
-// already owned one untouched; this fixes the dose count afterwards.
+// One brew fills the item up to its limit, as meditation did in vanilla.
+// Vanilla already does it for a new item, but leaves an owned one untouched.
 @wrapMethod(W3AlchemyManager)
 function CookItem(recipeName : name)
 {
 	var recipe : SAlchemyRecipe;
 	var inv : CInventoryComponent;
 	var items : array<SItemUniqueId>;
-	var hadItem, isConsumable : bool;
-	var oldAmmo : int;
-
-	// wrappedMethod may appear only once per wrapper.
-	inv = thePlayer.inv;
-	isConsumable = GetRecipe(recipeName, recipe) && CA_IsConsumableItemName(recipe.cookedItemName);
-	if(isConsumable)
-	{
-		items = inv.GetItemsByName(recipe.cookedItemName);
-		hadItem = items.Size() > 0;
-		if(hadItem)
-			oldAmmo = inv.SingletonItemGetAmmo(items[0]);
-	}
+	var i, maxAmmo : int;
 
 	wrappedMethod(recipeName);
 
-	if(!isConsumable)
+	if(!GetRecipe(recipeName, recipe) || !CA_IsConsumableItemName(recipe.cookedItemName))
 		return;
 
+	inv = thePlayer.inv;
 	items = inv.GetItemsByName(recipe.cookedItemName);
-	if(items.Size() > 0)
+	for(i=0; i<items.Size(); i+=1)
 	{
-		if(hadItem)
-			inv.CA_SetConsumableAmmo(items[0], oldAmmo + 1);
-		else
-			inv.CA_SetConsumableAmmo(items[0], 1);
+		maxAmmo = inv.SingletonItemGetMaxAmmo(items[i]);
+		if(inv.SingletonItemGetAmmo(items[i]) < maxAmmo)
+			inv.SingletonItemSetAmmo(items[i], maxAmmo);
 	}
 }

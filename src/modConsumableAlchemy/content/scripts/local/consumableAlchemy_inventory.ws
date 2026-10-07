@@ -1,80 +1,18 @@
 /***********************************************************************/
-/** 	Consumable Alchemy - inventory (doses, refills, looting)
+/** 	Consumable Alchemy - inventory (doses, refills)
 /***********************************************************************/
 
 // Single choke point for every refill (meditation, bed, alchemy table, quests, NG+).
 // Vanilla also calls it from OnItemAdded to initialize a newly acquired item;
-// that first call gives one dose, every later call is ignored for consumables.
+// that first call stays vanilla (full doses), every later call is ignored for consumables.
 @wrapMethod(CInventoryComponent)
 function SingletonItemRefillAmmo(id : SItemUniqueId, optional alchemyTableUsed : bool)
 {
-	if(!CA_IsConsumableItem(id))
-	{
-		wrappedMethod(id, alchemyTableUsed);
+	// wrappedMethod may appear only once per wrapper.
+	if(CA_IsConsumableItem(id) && GetItemModifierInt(id, 'is_initialized', 0) != 0)
 		return;
-	}
 
-	if(!GetItemModifierInt(id, 'is_initialized', 0))
-	{
-		SetItemModifierInt(id, 'ammo_current', 1);
-		theGame.GetGlobalEventsManager().OnScriptedEvent( SEC_OnAmmoChanged );
-	}
-}
-
-// Same as vanilla, but potions and bombs use a fixed base instead of the item's 'ammo'
-// attribute (decoctions keep it). Skill, decoction and set bonuses still apply on top of it.
-@replaceMethod(CInventoryComponent)
-function SingletonItemGetMaxAmmo(itemID : SItemUniqueId) : int
-{
-	var ammo, i : int;
-	var perk20Bonus, min, max : SAbilityAttributeValue;
-	var atts : array<name>;
-	var canUseSkill : bool;
-
-	ammo = RoundMath(CalculateAttributeValue(GetItemAttributeValue(itemID, 'ammo')));
-
-	if(ammo > 0 && CA_IsConsumableItem(itemID) && !IsItemMutagenPotion(itemID))
-		ammo = CA_GetMaxAmmo();
-
-	if( !ItemHasTag( itemID, 'NoAdditionalAmmo' ) )
-	{
-		if(GetEntity() == GetWitcherPlayer() && ammo > 0)
-		{
-			if(IsItemBomb(itemID) && thePlayer.CanUseSkill(S_Alchemy_s08) )
-			{
-				ammo += thePlayer.GetSkillLevel(S_Alchemy_s08);
-			}
-
-			if(thePlayer.HasBuff(EET_Mutagen03) && (IsItemBomb(itemID) || (!IsItemMutagenPotion(itemID) && IsItemPotion(itemID))) )
-			{
-				ammo += 1;
-			}
-
-			if( GetWitcherPlayer().IsSetBonusActive( EISB_RedWolf_2 ) && !IsItemMutagenPotion(itemID) )
-			{
-				theGame.GetDefinitionsManager().GetAbilityAttributeValue( GetSetBonusAbility( EISB_RedWolf_2 ), 'amount', min, max);
-				ammo += (int)min.valueAdditive;
-			}
-
-			if( IsItemBomb( itemID ) && thePlayer.CanUseSkill( S_Perk_20 ) &&  GetItemName( itemID ) != 'Snow Ball' )
-			{
-				GetItemAttributes( itemID, atts );
-				canUseSkill = thePlayer.CanUseSkill( S_Alchemy_s10 );
-				perk20Bonus = GetWitcherPlayer().GetSkillAttributeValue( S_Perk_20, 'stack_multiplier', false, false );
-
-				for( i=0 ; i<atts.Size() ; i+=1 )
-				{
-					if( canUseSkill || IsDamageTypeNameValid( atts[i] ) )
-					{
-						ammo = RoundMath( ammo * perk20Bonus.valueMultiplicative );
-						break;
-					}
-				}
-			}
-		}
-	}
-
-	return ammo;
+	wrappedMethod(id, alchemyTableUsed);
 }
 
 // Consumables never need a refill, so they must not trigger alcohol use
@@ -148,47 +86,4 @@ function SingletonItemRemoveAmmo(itemID : SItemUniqueId, optional quantity : int
 function ManageSingletonItemsBonus()
 {
 	theSound.SoundEvent("gui_global_denied");
-}
-
-// Looting / buying a consumable the player already owns adds one dose
-// (vanilla refused it). At the cap, vanilla's refusal and message are kept.
-@wrapMethod(CInventoryComponent)
-function GiveItemTo( otherInventory : CInventoryComponent, itemId : SItemUniqueId, optional quantity : int, optional refreshNewFlag : bool, optional forceTransferNoDrops : bool, optional informGUI : bool ) : SItemUniqueId
-{
-	var itemName : name;
-	var playerItems : array<SItemUniqueId>;
-	var newId : SItemUniqueId;
-	var addDose, isNewConsumable : bool;
-
-	// wrappedMethod may appear only once per wrapper, so decide first, call once.
-	addDose = false;
-	isNewConsumable = false;
-
-	if(otherInventory == thePlayer.inv && IsItemSingletonItem(itemId))
-	{
-		itemName = GetItemName(itemId);
-
-		if(CA_IsConsumableItemName(itemName) && !( !forceTransferNoDrops && ItemHasTag(itemId, 'NoDrop') && !ItemHasTag(itemId, 'Lootable') ))
-		{
-			playerItems = otherInventory.GetItemsByName(itemName);
-			if(playerItems.Size() > 0)
-				addDose = otherInventory.SingletonItemGetAmmo(playerItems[0]) < otherInventory.SingletonItemGetMaxAmmo(playerItems[0]);
-			else
-				isNewConsumable = true;
-		}
-	}
-
-	if(addDose)
-	{
-		otherInventory.SingletonItemAddAmmo(playerItems[0], 1);
-		RemoveItem(itemId, 1);
-		return playerItems[0];
-	}
-
-	newId = wrappedMethod(otherInventory, itemId, quantity, refreshNewFlag, forceTransferNoDrops, informGUI);
-
-	if(isNewConsumable && IsIdValid(newId))
-		otherInventory.CA_SetConsumableAmmo(newId, 1);
-
-	return newId;
 }

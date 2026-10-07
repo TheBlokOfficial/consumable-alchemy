@@ -7,8 +7,8 @@ Kontekst projektu dla kolejnych sesji. Opis dla gracza: [README.md](README.md).
 Zamiana alchemii z singletonów odnawianych medytacją na system zużywalny.
 
 1. Medytacja (i inne odnawianie) **nie** uzupełnia mikstur i bomb.
-2. Uwarzone mikstury/bomby można warzyć ponownie. ~~1 warzenie = 1 sztuka.~~ **Od sesji 6 (plan v0.4): warzenie uzupełnia kieszeń do max** (jak medytacja w vanilli) — patrz sekcja „Plan v0.4”.
-3. ~~Limit = baza 3~~ **Od sesji 6 (plan v0.4): limit vanilli** (atrybut `ammo` wg poziomu) **+ bonusy z vanilli** (skill Optymalizacja `S_Alchemy_s08`, buff `EET_Mutagen03`, zestaw `EISB_RedWolf_2`, perk `S_Perk_20`). Historia: sesja 2 — baza 3 + bonusy (wcześniej stałe 3 psuło opisy skilli).
+2. Uwarzone mikstury/bomby można warzyć ponownie. ~~1 warzenie = 1 sztuka.~~ **Od sesji 6 (plan v0.4, kod w sesji 7): warzenie uzupełnia kieszeń do max** (jak medytacja w vanilli) — patrz sekcja „Plan v0.4”. Pozyskanie poza warzeniem (loot, zakup, questy) = vanilla (sesja 7).
+3. ~~Limit = baza 3~~ **Od sesji 6 (plan v0.4, kod w sesji 7): limit vanilli** (atrybut `ammo` wg poziomu) **+ bonusy z vanilli** (skill Optymalizacja `S_Alchemy_s08`, buff `EET_Mutagen03`, zestaw `EISB_RedWolf_2`, perk `S_Perk_20`). Historia: sesja 2 — baza 3 + bonusy (wcześniej stałe 3 psuło opisy skilli).
 4. Poziomy jak w vanilli: wyższy poziom usuwa niższy, niższego nie można warzyć mając wyższy.
 5. Zakres: mikstury + bomby + **wywary (od sesji 4, limit vanillowy 1)**. Oleje, przedmioty questowe — vanilla.
 6. Alkohol jest wyłącznie składnikiem (od sesji 4 nie odnawia już niczego).
@@ -33,8 +33,8 @@ Zamiana alchemii z singletonów odnawianych medytacją na system zużywalny.
 
 ```
 src/modConsumableAlchemy/content/scripts/local/
-  consumableAlchemy_common.ws     – limit, klasyfikacja przedmiotów, helpery
-  consumableAlchemy_inventory.ws  – blokada odnawiania, limit, loot
+  consumableAlchemy_common.ws     – klasyfikacja przedmiotów
+  consumableAlchemy_inventory.ws  – blokada odnawiania, alkohol/powiadomienia, Corvo Bianco
   consumableAlchemy_alchemy.ws    – menedżer i menu alchemii (warzenie)
   consumableAlchemy_recipes.ws    – receptura powielania
 tools/recipes/                    – narzędzia do danych receptur (Python)
@@ -52,7 +52,7 @@ Ostrzeżenia `[content0] ... not marked as abstract` / `has no autostate` przy k
 Konwencja: wszystko własne ma prefiks `CA_`. Kod naśladuje styl vanilli (taby, `if(...)`, deklaracje zmiennych na początku funkcji — wymóg WitcherScript).
 
 ### Klasyfikacja „consumable” — `CA_IsConsumableItemName` (common.ws)
-Singleton **i** (bomba (`category == petard`) **lub** tag `Potion` — także wywary z tagiem `Mutagen`), z wyłączeniem: `Snow Ball`, `Tutorial Bomb`, `Village drink`, tag `Quest`, tag `NoAdditionalAmmo` (bomby z farbą `q703_paint_bomb_*` z Toussaint), `TAG_INFINITE_AMMO`. `CA_IsConsumableItem(id)` dodatkowo wymaga, by inwentarz należał do gracza. Limit: mikstury/bomby `CA_GetMaxAmmo()` (3) + bonusy; wywary (`IsItemMutagenPotion`) zachowują atrybut `ammo` (1), bonusy vanilli ich nie dotyczą.
+Singleton **i** (bomba (`category == petard`) **lub** tag `Potion` — także wywary z tagiem `Mutagen`), z wyłączeniem: `Snow Ball`, `Tutorial Bomb`, `Village drink`, tag `Quest`, tag `NoAdditionalAmmo` (bomby z farbą `q703_paint_bomb_*` z Toussaint), `TAG_INFINITE_AMMO`. `CA_IsConsumableItem(id)` dodatkowo wymaga, by inwentarz należał do gracza. Limit (od v0.4): **vanilla** — `SingletonItemGetMaxAmmo` bez zmian (atrybut `ammo` + bonusy vanilli; wywary 1, bonusy ich nie dotyczą). Mod nie ma już własnej stałej limitu (`CA_GetMaxAmmo` usunięte).
 
 ### Receptura powielania — `consumableAlchemy_recipes.ws`
 `CA_GetRecipeIngredients(recipe)`: jeśli gracz posiada uwarzony przedmiot (`CA_IsCopyRecipe` — consumable i `GetItemQuantityByName > 0`, także 0 dawek) → `CA_GetCopyIngredients`, inaczej pełna receptura. Reguła: wypada przedmiot niższego poziomu (`category potion/petard`); alkohol (`StrongAlcohol`) zostaje zawsze ×1, `White Gull 1` → `Alcohest`; zostają proszki bazowe bomb (`CA_IsBombBase`) i składniki bez tagu `MutagenIngredient` z `GetItemPrice ≤ CA_GetCopyPriceThreshold()` (16), ilość / `CA_GetCopyQuantityDivisor()` (2) w górę; reszta wypada. Narzędzie `tools\recipes\rule.py [próg] [dzielnik]` liczy dokładnie to samo (tabela wyników). Wszystkie trzy źródła receptur dają tę samą listę:
@@ -66,23 +66,37 @@ Singleton **i** (bomba (`category == petard`) **lub** tag `Potion` — także wy
 
 | Mechanika | Vanilla | Zmiana w modzie |
 |---|---|---|
-| Każde odnawianie (medytacja `playerWitcher.ws:10249 MeditationRestoring`, łóżko, stół, `RecoverGeralt`, NG+ `:1191`, tutorial) przechodzi przez `SingletonItemRefillAmmo` (`inventoryComponent.ws:3575`) | ustawia max | `@wrapMethod`: dla consumables tylko inicjalizacja (gdy `is_initialized == 0` → 1 dawka), poza tym no-op |
-| Inicjalizacja nowego przedmiotu: `OnItemAdded` (`inventoryComponent.ws:4817`) woła refill, potem ustawia `is_initialized = 1` | pełne ładunki | dzięki powyższemu → 1 dawka |
-| Limit: `SingletonItemGetMaxAmmo` (`:3779`) | atrybut `ammo` + bonusy | `@replaceMethod`: kopia vanilli, dla consumables baza = `CA_GetMaxAmmo()` (3) zamiast atrybutu; bonusy bez zmian |
+| Każde odnawianie (medytacja `playerWitcher.ws:10249 MeditationRestoring`, łóżko, stół, `RecoverGeralt`, NG+ `:1191`, tutorial) przechodzi przez `SingletonItemRefillAmmo` (`inventoryComponent.ws:3575`) | ustawia max | `@wrapMethod`: zainicjalizowane consumables (`is_initialized != 0`) → no-op; wszystko inne (nie-consumables, inicjalizacja nowego przedmiotu) → `wrappedMethod` (vanilla) |
+| Inicjalizacja nowego przedmiotu: `OnItemAdded` (`inventoryComponent.ws:4817`) woła refill, potem ustawia `is_initialized = 1` | pełne ładunki | od v0.4 vanilla → max (w Corvo Bianco po użyciu łóżka/stołu vanilla daje max + 1). Do v0.3: 1 dawka |
+| Limit: `SingletonItemGetMaxAmmo` (`:3779`) | atrybut `ammo` + bonusy | od v0.4 bez zmian (vanilla). Do v0.3: `@replaceMethod` z bazą 3 |
 | Nadmiar ponad limit (stare zapisy, wygaśnięty bonus) | vanilla przycina tylko przy zmianie skilla/zestawu (`SkillReduceBombAmmoBonus`, `r4Player.ws:11743`) | bez zmian — nadmiar schodzi przy użyciu. **Nie** przycinać przy odczycie: limit zależy od skilli/buffów, które przy wczytywaniu zapisu mogą być jeszcze nieprzywrócone → trwała utrata dawek |
 | Alkohol + powiadomienia: `SingletonItemsRefillAmmo` (`:3641`) / `NoAlco` sterowane przez prywatne `HasNotFilledSingletonItem` (`:3712`) | | `@replaceMethod HasNotFilledSingletonItem`: pomija consumables |
 | Tutorial „uzupełnij alkoholem”: `SingletonItemRemoveAmmo` (`:3749`) dodaje fakt `tut_alch_refill` | | `@replaceMethod`: nie dla consumables |
 | Stół alchemiczny Corvo Bianco: `ManageSingletonItemsBonus` (`:3832`), wołane z `quest_function.ws:7921 ApplyAlchemyTableBuff` | +1 ponad max | `@replaceMethod`: tylko dźwięk odmowy |
-| Loot/zakup: `GiveItemTo` (`:745`) odrzuca posiadany singleton z komunikatem „already cooked” | | `@wrapMethod`: posiadany → +1 dawka i usunięcie z kontenera; przy limicie vanilla odmowa; nowy → 1 dawka |
+| Loot/zakup: `GiveItemTo` (`:745`) odrzuca posiadany singleton z komunikatem „already cooked” | | od v0.4 bez zmian (vanilla: posiadany → odmowa „already cooked”, nowy → max przez inicjalizację). Do v0.3: `@wrapMethod` (+1 dawka / nowy 1 dawka) |
 | Warzenie dozwolone?: `W3AlchemyManager.CanCookRecipe` (`alchemyManager.ws:141`) zwraca `EAE_CannotCookMore` dla posiadanych | | `@replaceMethod`: consumable posiadany → blokada tylko przy `ammo >= max` |
-| Warzenie: `CookItem` (`alchemyManager.ws:208`) — nowy przedmiot dostaje max, posiadany bez zmian | | `@wrapMethod`: po vanilla ustawia `stare + 1` lub `1` |
+| Warzenie: `CookItem` (`alchemyManager.ws:208`) — nowy przedmiot dostaje max, posiadany bez zmian | | `@wrapMethod`: po vanilla każdy egzemplarz uwarzonego consumable z `ammo < max` → `SingletonItemSetAmmo(max)` (pełna kieszeń; nadmiar ponad max nietknięty). Do v0.3: `stare + 1` lub `1` |
 | UI menu: `alchemyMenu.ws` pokazuje `cantCookReason` z `AlchemyExceptionToString` | | bez zmian (reużycie stringu) |
 
-## Plan v0.4 (sesja 6, 2026-10-07) — NIE zaimplementowane
+## Plan v0.4 (sesja 6, 2026-10-07) — kod zaimplementowany (sesja 7, 2026-10-07), czeka na test w grze
+
+Zakres sesji 7 (kod): pełna kieszeń przy warzeniu, limity vanilli, pozyskanie poza warzeniem = vanilla (usunięte `@replaceMethod SingletonItemGetMaxAmmo`, `CA_GetMaxAmmo`, `@wrapMethod GiveItemTo`, `CA_SetConsumableAmmo`; wrapper `SingletonItemRefillAmmo` przy inicjalizacji woła vanillę). Receptury powielania bez zmian (reguła v0.3) — części potworów i ręczna tabela to dalsze etapy.
+
+### Do sprawdzenia w grze (v0.4)
+- [ ] Kompilacja (po usunięciu `@replaceMethod SingletonItemGetMaxAmmo` / `GiveItemTo` i `CA_SetConsumableAmmo`).
+- [ ] Warzenie przy 0/x i przy częściowej kieszeni (np. 1/3) daje max.
+- [ ] Limity vanilli: np. Jaskółka 1 x/3, bomby poz. 1 x/2, wywar 1/1.
+- [ ] Optymalizacja (`S_Alchemy_s08`) podnosi limit bomb; warzenie napełnia do nowego limitu.
+- [ ] Ulepszenie (np. Jaskółka 2) ma od razu max.
+- [ ] Medytacja nadal nie odnawia mikstur/bomb/wywarów i nie zużywa alkoholu.
+- [ ] Stary zapis z nadmiarem (np. 5/3 z v0.3) pokazuje limit vanilli; nadmiar schodzi przy użyciu, warzenie zablokowane do spadku poniżej limitu.
+- [ ] Zakup/loot posiadanej mikstury → vanillowa odmowa („już uwarzono”).
+- [ ] Nowy przedmiot z lootu/sklepu → pełny max.
 
 **Decyzje użytkownika:**
-- **Warzenie = pełna kieszeń** (`CookItem` ustawia max zamiast `stare + 1`). Dolewka przy 2/3 kosztuje tyle co przy 0/3 — tak samo jak medytacja w vanilli, nie jest to wada. Skille limitu zyskują sens: większa pojemność = tańsza dawka. Rozwiązuje TODO „przenoszenie dawek przy ulepszaniu” (nowy poziom dostaje max). Do rozważenia: warzenie w Corvo Bianco ze stołem → max + `QUANTITY_INCREASED_BY_ALCHEMY_TABLE` (vanillowa stała, +1).
-- **Limity vanilli** — usunąć `@replaceMethod SingletonItemGetMaxAmmo` (oraz `CA_GetMaxAmmo`). Wartości `ammo` z XML (`def_item_alchemy_potion.xml` / `_petards.xml` / `_mutagens.xml`; NG+ `items_plus` bez `ammo`) — do potwierdzenia jednym tooltipem w vanilli, bo abilities poz. 2/3 zagnieżdżają się cyklicznie:
+- **Warzenie = pełna kieszeń** (`CookItem` ustawia max zamiast `stare + 1`). Dolewka przy 2/3 kosztuje tyle co przy 0/3 — tak samo jak medytacja w vanilli, nie jest to wada. Skille limitu zyskują sens: większa pojemność = tańsza dawka. Rozwiązuje TODO „przenoszenie dawek przy ulepszaniu” (nowy poziom dostaje max). Corvo Bianco: warzenie przy stole bez premii (stół dalej tylko odmawia) — pomysł w TODO.
+- **Pozyskanie przedmiotu poza warzeniem = vanilla** (decyzja sesji 7): loot/zakup/questy nie odbiegają od vanilli — nowy przedmiot dostaje max, posiadany jest odrzucany komunikatem „already cooked”. Według użytkownika w świecie gry i tak nie ma gotowych mikstur do podniesienia (niezweryfikowane w danych; poz. 2/3 na pewno nie ma w lootcie ani u kupców).
+- **Limity vanilli** — usunąć `@replaceMethod SingletonItemGetMaxAmmo` (oraz `CA_GetMaxAmmo`) ✔ (sesja 7). Wartości `ammo` z XML (`def_item_alchemy_potion.xml` / `_petards.xml` / `_mutagens.xml`; NG+ `items_plus` bez `ammo`) — do potwierdzenia jednym tooltipem w vanilli, bo abilities poz. 2/3 zagnieżdżają się cyklicznie:
   - mikstury 3/4/5; wyjątki: Zamieć (Blizzard) 2/3/4, Biały Miód 1/2/5, Odwar Raffarda 2/2/3; Orka 3; feromony 2;
   - bomby 2/3/4; wywary 1.
 - **Alkohol bez zmian** (stały z receptury, ×1). **Znany lekki problem na przyszłość:** w modzie alkohol zużywa się szybciej niż w vanilli — vanilla: 1 sztuka najtańszego `StrongAlcohol` na całą medytację (`GetAlcoholForAlchemicalItemsRefill`, `playerWitcher.ws:5621`, w praktyce `Mahakam Spirit` 8 / `Alcohest` 10); mod: 1 na każdą uzupełnianą miksturę/wywar (np. 4 mikstury + 1 wywar = 5×). Podaż dobra (`Dwarven spirit` 20 sklepów, `Alcohest` 21). Pomysł odłożony: w powieleniu podstawiać najtańszy posiadany alkohol (jak medytacja).
@@ -92,9 +106,9 @@ Singleton **i** (bomba (`category == petard`) **lub** tag `Potion` — także wy
 - **Części potworów w powieleniu — NIEROZSTRZYGNIĘTE.** Zależy od łatwości zdobycia (respawn, drop). Punkt odniesienia użytkownika: Wiedźmin 1 (części potworów podstawą alchemii, potwory odradzały się, zdobycie części ≈ zebranie zioła). W toku: research W1 + analiza dropu części potworów w W3.
 
 **Otwarte drobiazgi v0.4 (niezablokowujące):**
-- Loot nowej mikstury daje 1 dawkę, a nagrody questowe/startowe pełną kieszeń (omijają nasz kod). Rekomendacja (niepotwierdzona przez użytkownika): loot zostaje 1 dawka (znaleziona butelka = jedna butelka; darmowe uzupełnienie do max podważałoby koszt warzenia), questy jak vanilla.
-- Corvo Bianco: warzenie przy stole → max+1? (do decyzji).
-- Kolejność pracy: (1) kod v0.4 (pełna kieszeń + limity vanilli), (2) narzędzia receptur: szkic → walidator → generator `.ws`, (3) szlifowanie receptur rodzina po rodzinie.
+- ~~Loot nowej mikstury daje 1 dawkę~~ — **rozstrzygnięte (sesja 7):** pozyskanie poza warzeniem = vanilla (loot/zakup/questy/start: pełna kieszeń, posiadany → odmowa).
+- Corvo Bianco: warzenie przy stole → max+1? — bez zmian, przeniesione do TODO.
+- Kolejność pracy: (1) ~~kod v0.4 (pełna kieszeń + limity vanilli)~~ ✔ sesja 7, (2) narzędzia receptur: szkic → walidator → generator `.ws`, (3) szlifowanie receptur rodzina po rodzinie.
 
 **Degradacja (sprawdzone w kodzie, sesja 6):** mod nie zapisuje w save'ie nic własnego (brak klas ze stanem, `saved`, faktów, tagów) — tylko vanillowe `ammo_current` / `is_initialized`. Usunięcie moda: vanilla uzupełnia przy medytacji tylko gdy `ammo < max` (`inventoryComponent.ws:3599`), nadmiar zostaje i schodzi przy użyciu. Dodanie moda: posiadane mikstury od razu mają tanią recepturę. Po przejściu na limity vanilli nie zostaje żaden widoczny ślad (znika „5/3”). Do potwierdzenia w grze: wczytanie zapisu po usunięciu moda (mikstura 0/x, bomba ponad max).
 
@@ -141,6 +155,7 @@ Zaimplementowany wariant A: receptura powielania (v2 + połowa ilości), wywary 
 - `quest_function.ws:2016/2053/2135/5958/6004` (`AddItemQuest`, `AddItemQuestExt` itd.) — po `AddAnItem` wołają wprost `SingletonItemSetAmmo(max)` → nagroda questowa = 3 dawki (nasz limit).
 - `r4Player.ws:15482` (startowe przedmioty nowej gry) i `:15547` (debug) — to samo.
 - Na starcie HoS `Swallow 2` miał 3/3 zamiast 1 — przyczyna niepotwierdzona (możliwe, że start idzie inną ścieżką niż sam `StandaloneEp1_1`). Do decyzji: czy przedmioty startowe/questowe mają dawać 1 dawkę, czy pełne (obecnie pełne).
+- **Od v0.4 (sesja 7) nieistotne:** pozyskanie poza warzeniem = vanilla, więc pełne dawki (limit vanilli) z tych ścieżek są zamierzone.
 
 ## Do zweryfikowania w grze (pierwsze uruchomienie)
 
@@ -211,6 +226,4 @@ Reguła liczona w skrypcie z danych vanilli (jedna funkcja `CA_`, bez ręcznej t
 
 ## Pomysły / TODO na później
 
-- Stół alchemiczny w Corvo Bianco — nadać mu sensowną rolę (np. +1 do limitu).
-- Ewentualne przenoszenie dawek przy ulepszaniu poziomu.
-- Powiadomienie HUD przy dobraniu dawki z lootu.
+- Stół alchemiczny w Corvo Bianco — nadać mu sensowną rolę (np. warzenie przy stole → max + `QUANTITY_INCREASED_BY_ALCHEMY_TABLE`). Obecnie bez zmian: `ManageSingletonItemsBonus` tylko odmawia.

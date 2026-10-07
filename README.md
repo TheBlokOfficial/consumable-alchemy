@@ -15,10 +15,9 @@ Ten mod przywraca alchemię jako rzemiosło, jak w pierwszym Wiedźminie: każda
 ## Co robi
 
 - **Medytacja niczego nie uzupełnia** — ani mikstur, ani bomb, ani wywarów. Alkohol jest zwykłym składnikiem.
-- **Jedno warzenie = jedna sztuka.** Uwarzoną już miksturę możesz warzyć ponownie, aż do limitu.
-- **Limit: 3 sztuki** każdej mikstury i bomby. Umiejętności, wywary i zestawy, które w grze zwiększają limit, działają dalej. Wywary: 1 sztuka, jak w grze.
+- **Warzenie napełnia do pełna** — tak jak dawniej medytacja. Uwarzoną już miksturę, bombę lub wywar możesz warzyć ponownie, gdy brakuje choć jednej sztuki.
+- **Limity jak w grze.** Umiejętności, wywary i zestawy, które w grze zwiększają limit, działają dalej — im większy limit, tym więcej sztuk z jednego warzenia.
 - **Pierwsze warzenie — pełna receptura. Każde kolejne — krótsza:** alkohol i tanie zioła lub minerały, w połowie ilości. Części potworów, mutageny, rzadkie minerały i mikstura niższego poziomu nie są już potrzebne. Zamiast Białej Mewy wystarczy alkohest.
-- **Łupy:** znaleziona mikstura lub bomba, którą już masz, to +1 sztuka. Nowa — 1 sztuka.
 - **Wygląda jak podstawowa gra.** Żadnych nowych napisów, okien ani przycisków — krótsza receptura po prostu pojawia się w menu alchemii.
 
 ### Przykład
@@ -28,7 +27,7 @@ Ten mod przywraca alchemię jako rzemiosło, jak w pierwszym Wiedźminie: każda
 | **Jaskółka** | krasnoludzki spirytus, 5× jaskółcze ziele, mózg topielca | krasnoludzki spirytus, 3× jaskółcze ziele |
 | **Wzmocniona Jaskółka** | alkohest, Jaskółka, 6× jaskółcze ziele, 4× biały mirt, 5× mózg topielca | alkohest, 3× jaskółcze ziele, 2× biały mirt |
 
-Poziomy działają jak w grze: uwarzenie wersji Wzmocnionej zastępuje podstawową.
+Poziomy działają jak w grze: uwarzenie wersji Wzmocnionej zastępuje podstawową i od razu daje pełny zapas.
 
 ## Instalacja
 
@@ -50,8 +49,7 @@ Można instalować w trakcie rozgrywki. Mod nie pojawia się na liście modów w
 
 - Mikstura z 0 sztuk zostaje w ekwipunku — to znak, że znasz już krótszą recepturę.
 - Oleje działają jak w podstawowej grze.
-- Mikstury i bomby z nagród za zadania dostajesz w pełnym limicie.
+- Mikstury i bomby z łupów, od kupców i z nagród za zadania działają jak w grze: nowe dostajesz w pełnym limicie.
 - Jeśli wczytasz stary zapis z większą liczbą sztuk niż limit, nadwyżka zostaje, dopóki jej nie zużyjesz.
 - Stół alchemiczny w Corvo Bianco nie daje premii do mikstur i bomb.
 - Wywar Wodnej Baby działa jak w grze: po wypiciu daje +1 sztukę każdej mikstury i bomby, a po wygaśnięciu ją zabiera.
-- Mikstura podniesiona z łupu, którą już masz, nie pokazuje komunikatu na ekranie — sztuka i tak trafia do ekwipunku.
